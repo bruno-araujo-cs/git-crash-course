@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git & GitHub for Cybersecurity</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #0a0e27;
+        color: #e0e0e0;
+        overflow: hidden;
+      }
+
+      .presentation {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+      }
+
+      .slide {
+        width: 100%;
+        height: 100%;
+        display: none;
+        padding: 50px 70px;
+        background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow-y: auto;
+      }
+
+      .slide.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-size: 3.2em;
+        margin-bottom: 20px;
+        color: #00ff88;
+        text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+      }
+
+      h2 {
+        font-size: 2.3em;
+        margin-bottom: 25px;
+        color: #00ff88;
+        border-bottom: 3px solid #00ff88;
+        padding-bottom: 10px;
+      }
+
+      h3 {
+        font-size: 1.6em;
+        margin: 20px 0 12px 0;
+        color: #4dd4ac;
+      }
+
+      p,
+      li {
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin-bottom: 12px;
+      }
+
+      ul {
+        margin-left: 35px;
+      }
+
+      .subtitle {
+        font-size: 1.4em;
+        color: #aaa;
+        margin-top: 10px;
+      }
+
+      .controls {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        display: flex;
+        gap: 12px;
+        z-index: 100;
+      }
+
+      button {
+        background: #00ff88;
+        color: #0a0e27;
+        border: none;
+        padding: 12px 28px;
+        font-size: 1em;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s;
+      }
+
+      button:hover {
+        background: #4dd4ac;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+      }
+
+      button:disabled {
+        background: #555;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .slide-number {
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        font-size: 1.1em;
+        color: #888;
+      }
+
+      .box {
+        background: rgba(0, 255, 136, 0.1);
+        border-left: 4px solid #00ff88;
+        padding: 18px;
+        margin: 18px 0;
+        border-radius: 5px;
+      }
+
+      .warning-box {
+        background: rgba(255, 193, 7, 0.1);
+        border-left: 4px solid #ffc107;
+        padding: 18px;
+        margin: 18px 0;
+        border-radius: 5px;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-top: 18px;
+      }
+
+      .card {
+        background: rgba(77, 212, 172, 0.1);
+        padding: 22px;
+        border-radius: 8px;
+        border: 2px solid rgba(0, 255, 136, 0.3);
+      }
+
+      .highlight {
+        color: #00ff88;
+        font-weight: bold;
+      }
+
+      code {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 3px 10px;
+        border-radius: 4px;
+        font-family: 'Courier New', monospace;
+        color: #4dd4ac;
+        font-size: 0.95em;
+      }
+
+      .command-box {
+        background: #1a1f3a;
+        border: 1px solid #00ff88;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+        font-family: 'Courier New', monospace;
+        color: #00ff88;
+      }
+
+      .cyber-icon {
+        display: inline-block;
+        color: #00ff88;
+        margin-right: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="presentation">
+      <!-- Slide 1: Title -->
+      <div class="slide active">
+        <h1>Git & Github</h1>
+        <p>What it is and why it's important for you to learn how to use it.</p>
+      </div>
+
+      <!-- Slide 2: What is Git? -->
+      <div class="slide">
+        <h2>What is Git?</h2>
+        <p>
+          Git is a <span class="highlight">version control system</span> - think
+          of it as a time machine for your code and files.
+        </p>
+
+        <div class="box">
+          <h3>Why Version Control Matters in Cybersecurity:</h3>
+          <ul>
+            <li>
+              <strong>Audit trail:</strong> See who changed what security
+              configuration and when
+            </li>
+            <li>
+              <strong>Rollback:</strong> Undo changes if a security script
+              breaks something
+            </li>
+            <li>
+              <strong>Collaboration:</strong> Multiple team members can work on
+              incident response playbooks
+            </li>
+            <li>
+              <strong>Backup:</strong> Your security tools are safely stored and
+              recoverable
+            </li>
+          </ul>
+        </div>
+
+        <p style="margin-top: 25px"><strong>Git vs GitHub:</strong></p>
+        <ul>
+          <li>
+            <strong>Git</strong> = The tool that runs on your computer (tracks
+            changes)
+          </li>
+          <li>
+            <strong>GitHub</strong> = A website where you host your Git
+            repositories online
+          </li>
+        </ul>
+      </div>
+
+      <!-- Slide 3: Key Concepts -->
+      <div class="slide">
+        <h2>Key Concepts You Need to Know</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Repository (Repo)</h3>
+            <p>
+              A project folder tracked by Git. Contains all your files and the
+              complete history of changes.
+            </p>
+            <p style="margin-top: 10px; font-size: 0.95em">
+              Example: Your penetration testing scripts collection
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Commit</h3>
+            <p>
+              A snapshot of your project at a specific point in time. Like
+              saving a checkpoint.
+            </p>
+            <p style="margin-top: 10px; font-size: 0.95em">
+              Example: "Fixed vulnerability scanner bug"
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Branch</h3>
+            <p>
+              A parallel version of your repository. Lets you work on new
+              features without breaking the main code.
+            </p>
+            <p style="margin-top: 10px; font-size: 0.95em">
+              Example: Testing a new exploit module
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Clone</h3>
+            <p>
+              Making a copy of a repository from GitHub to your local machine.
+            </p>
+            <p style="margin-top: 10px; font-size: 0.95em">
+              Example: Downloading OWASP ZAP source code
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Setting Up Git -->
+      <div class="slide">
+        <h2>Setting Up Git</h2>
+
+        <h3>1. Check if Git is installed:</h3>
+        <div class="command-box">git --version</div>
+
+        <h3>2. Install Git (if needed):</h3>
+        <ul>
+          <li>
+            <strong>Mac/Linux:</strong> Usually pre-installed, or use
+            <code>brew install git</code> (Mac)
+          </li>
+          <li>
+            <strong>Windows:</strong> Download from git-scm.com (choose Git Bash
+            during install)
+          </li>
+        </ul>
+
+        <h3>3. Configure Git with your identity:</h3>
+        <div class="command-box">
+          git config --global user.name "Your Name"<br />
+          git config --global user.email "your.email@example.com"
+        </div>
+
+        <p style="margin-top: 20px">
+          This info appears in your commits so people know who made changes.
+        </p>
+      </div>
+
+      <!-- Slide 5: Basic Git Workflow -->
+      <div class="slide">
+        <h2>The Basic Git Workflow</h2>
+
+        <div class="box">
+          <h3>The Four-Step Process:</h3>
+          <ol style="margin-left: 20px; font-size: 1.1em">
+            <li style="margin: 15px 0">
+              <strong>Make changes</strong> to your files (write code, edit
+              configs)
+            </li>
+            <li style="margin: 15px 0">
+              <strong>Stage changes</strong> with <code>git add</code> (tell Git
+              what to track)
+            </li>
+            <li style="margin: 15px 0">
+              <strong>Commit changes</strong> with <code>git commit</code> (save
+              a snapshot)
+            </li>
+            <li style="margin: 15px 0">
+              <strong>Push changes</strong> with <code>git push</code> (upload
+              to GitHub)
+            </li>
+          </ol>
+        </div>
+
+        <h3 style="margin-top: 30px">Essential Commands:</h3>
+        <div class="command-box">
+          git status # See what files have changed<br />
+          git add . # Stage all changed files<br />
+          git commit -m "message" # Commit with a message<br />
+          git push # Upload to GitHub
+        </div>
+      </div>
+
+      <!-- Slide 6: Creating Your First Repo -->
+      <div class="slide">
+        <h2>Hands-On: Creating Your First Repository</h2>
+
+        <h3>Method 1: Start on GitHub (Recommended for beginners)</h3>
+        <ol style="margin-left: 20px">
+          <li>Go to github.com and sign up/login</li>
+          <li>
+            Click the <span class="highlight">+</span> icon → "New repository"
+          </li>
+          <li>Name it (e.g., "security-scripts")</li>
+          <li>Check "Add a README file"</li>
+          <li>Click "Create repository"</li>
+        </ol>
+
+        <h3 style="margin-top: 25px">Method 2: Start Locally</h3>
+        <div class="command-box">
+          mkdir my-security-project<br />
+          cd my-security-project<br />
+          git init # Initialize Git in this folder<br />
+          git add .<br />
+          git commit -m "Initial commit"
+        </div>
+
+        <p style="margin-top: 15px">
+          Then create a repo on GitHub and connect them (we'll cover this later)
+        </p>
+      </div>
+
+      <!-- Slide 7: Cloning a Repository -->
+      <div class="slide">
+        <h2>Cloning a Repository</h2>
+
+        <p>
+          Want to work with someone else's code or your own repo from GitHub?
+          Use <code>git clone</code>!
+        </p>
+
+        <div class="box">
+          <h3>Example: Clone a security tool</h3>
+          <p>
+            Let's say you want to download a popular security tool from GitHub:
+          </p>
+
+          <div class="command-box" style="margin-top: 15px">
+            git clone https://github.com/username/security-tool.git
+          </div>
+
+          <p style="margin-top: 15px">
+            This creates a folder called <code>security-tool</code> with all the
+            code inside.
+          </p>
+        </div>
+
+        <div class="warning-box">
+          <h3>⚠️ Security Note:</h3>
+          <p>
+            Always review code before running it! Cloned repositories can
+            contain malicious code. Use:
+          </p>
+          <div class="command-box" style="margin-top: 10px">
+            ls -la # List all files including hidden<br />
+            cat suspicious-file.sh # Read file contents before executing
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 8: Making Changes & Commits -->
+      <div class="slide">
+        <h2>Making Changes and Commits</h2>
+
+        <h3>Scenario: You're updating a security scanning script</h3>
+
+        <div class="command-box">
+          # 1. Check what's changed<br />
+          git status<br /><br />
+
+          # 2. See exactly what changed in each file<br />
+          git diff<br /><br />
+
+          # 3. Stage your changes<br />
+          git add scanner.py # Add specific file<br />
+          git add . # Add all changed files<br /><br />
+
+          # 4. Commit with a descriptive message<br />
+          git commit -m "Added SSL certificate validation check"
+        </div>
+
+        <div class="box" style="margin-top: 20px">
+          <h3>Writing Good Commit Messages:</h3>
+          <ul>
+            <li>✅ "Fixed SQL injection vulnerability in login form"</li>
+            <li>✅ "Added rate limiting to API endpoints"</li>
+            <li>❌ "Fixed stuff" (too vague!)</li>
+            <li>❌ "Update" (doesn't explain what was updated)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Slide 9: Pushing to GitHub -->
+      <div class="slide">
+        <h2>Pushing Your Changes to GitHub</h2>
+
+        <p>Once you've committed changes locally, push them to GitHub:</p>
+
+        <div class="command-box">git push origin main</div>
+
+        <p style="margin-top: 20px"><strong>Breaking it down:</strong></p>
+        <ul>
+          <li><code>git push</code> = upload changes</li>
+          <li>
+            <code>origin</code> = the default name for your GitHub repository
+          </li>
+          <li>
+            <code>main</code> = the branch you're pushing to (default branch)
+          </li>
+        </ul>
+
+        <div class="box" style="margin-top: 25px">
+          <h3>First Time Pushing?</h3>
+          <p>If this is your first push, you might need to set the upstream:</p>
+          <div class="command-box" style="margin-top: 10px">
+            git push -u origin main
+          </div>
+          <p style="margin-top: 10px">
+            The <code>-u</code> flag sets the upstream, so next time you can
+            just type <code>git push</code>
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 10: Pulling Changes -->
+      <div class="slide">
+        <h2>Pulling Changes from GitHub</h2>
+
+        <p>
+          Your teammate updated the incident response playbook on GitHub. Get
+          those changes:
+        </p>
+
+        <div class="command-box">git pull origin main</div>
+
+        <p style="margin-top: 20px">
+          This downloads and merges changes from GitHub into your local
+          repository.
+        </p>
+
+        <div class="warning-box">
+          <h3>⚠️ Best Practice:</h3>
+          <p>Always pull before you push! This prevents conflicts:</p>
+          <div class="command-box" style="margin-top: 10px">
+            git pull # Get latest changes<br />
+            # Make your changes<br />
+            git add .<br />
+            git commit -m "Your message"<br />
+            git push # Upload your changes
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 11: Branching Basics -->
+      <div class="slide">
+        <h2>Branching: Work Safely in Parallel</h2>
+
+        <p>Branches let you experiment without breaking the main code.</p>
+
+        <div class="box">
+          <h3>Cybersecurity Use Cases:</h3>
+          <ul>
+            <li>Testing a new exploit without breaking your main toolkit</li>
+            <li>
+              Developing different attack scenarios for red team exercises
+            </li>
+            <li>
+              Multiple analysts working on different parts of a security audit
+            </li>
+          </ul>
+        </div>
+
+        <h3>Basic Branch Commands:</h3>
+        <div class="command-box">
+          git branch # List all branches<br />
+          git branch feature-new-scanner # Create new branch<br />
+          git checkout feature-new-scanner # Switch to branch<br />
+          git checkout -b feature-new-scanner # Create AND switch<br /><br />
+
+          # Make changes, commit them<br />
+          git add .<br />
+          git commit -m "Built new vulnerability scanner"<br />
+          git push origin feature-new-scanner # Push branch to GitHub
+        </div>
+      </div>
+
+      <!-- Slide 12: Merging Branches -->
+      <div class="slide">
+        <h2>Merging Branches</h2>
+
+        <p>Once your feature is ready, merge it back into the main branch:</p>
+
+        <div class="command-box">
+          # Switch to main branch<br />
+          git checkout main<br /><br />
+
+          # Pull latest changes<br />
+          git pull<br /><br />
+
+          # Merge your feature branch<br />
+          git merge feature-new-scanner<br /><br />
+
+          # Push merged code<br />
+          git push
+        </div>
+
+        <div class="box" style="margin-top: 25px">
+          <h3>Better Way: Pull Requests on GitHub</h3>
+          <p>Instead of merging locally, use GitHub Pull Requests (PRs):</p>
+          <ol style="margin-left: 20px; margin-top: 10px">
+            <li>Push your branch to GitHub</li>
+            <li>Go to GitHub → "Pull requests" → "New pull request"</li>
+            <li>Select your branch to merge into main</li>
+            <li>Add description, request review from teammates</li>
+            <li>Merge when approved!</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Slide 13: Merge Conflicts -->
+      <div class="slide">
+        <h2>Handling Merge Conflicts</h2>
+
+        <p>
+          Sometimes Git can't automatically merge changes. This happens when two
+          people edit the same line.
+        </p>
+
+        <div class="warning-box">
+          <h3>What a Conflict Looks Like:</h3>
+          <div class="command-box" style="margin-top: 10px; color: #fff">
+            <<<<<<< HEAD<br />
+            allowed_ips = ["192.168.1.0/24"]<br />
+            =======<br />
+            allowed_ips = ["10.0.0.0/8"]<br />
+            >>>>>>> feature-branch
+          </div>
+        </div>
+
+        <h3>How to Resolve:</h3>
+        <ol style="margin-left: 20px">
+          <li>Open the conflicted file in your editor</li>
+          <li>
+            Look for the conflict markers (<code><<<<<<<</code>,
+            <code>=======</code>, <code>>>>>>>></code>)
+          </li>
+          <li>Decide which version to keep (or combine them)</li>
+          <li>Delete the conflict markers</li>
+          <li>Save, stage, and commit</li>
+        </ol>
+
+        <div class="command-box" style="margin-top: 15px">
+          git add conflicted-file.py<br />
+          git commit -m "Resolved merge conflict in IP whitelist"
+        </div>
+      </div>
+
+      <!-- Slide 14: Undoing Changes -->
+      <div class="slide">
+        <h2>Undoing Mistakes</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Unstage Files</h3>
+            <p>Accidentally staged the wrong file?</p>
+            <div class="command-box" style="margin-top: 10px; font-size: 0.9em">
+              git reset filename.py<br />
+              # or<br />
+              git reset # unstage all
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Undo Last Commit</h3>
+            <p>Keep changes, just undo the commit:</p>
+            <div class="command-box" style="margin-top: 10px; font-size: 0.9em">
+              git reset HEAD~1
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Discard Local Changes</h3>
+            <p>Throw away all uncommitted changes:</p>
+            <div class="command-box" style="margin-top: 10px; font-size: 0.9em">
+              git checkout -- filename.py<br />
+              # or<br />
+              git restore filename.py
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Go Back in Time</h3>
+            <p>Completely reset to a previous commit:</p>
+            <div class="command-box" style="margin-top: 10px; font-size: 0.9em">
+              git log # find commit hash<br />
+              git reset --hard abc123
+            </div>
+            <p style="margin-top: 8px; font-size: 0.85em; color: #ffc107">
+              ⚠️ This deletes changes!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 15: .gitignore -->
+      <div class="slide">
+        <h2>The .gitignore File</h2>
+
+        <p>
+          Some files should NEVER be committed to Git (especially in security
+          work!):
+        </p>
+
+        <div class="warning-box">
+          <h3>⚠️ Never Commit These:</h3>
+          <ul>
+            <li>API keys and passwords</li>
+            <li>SSH private keys</li>
+            <li>Database credentials</li>
+            <li>Client sensitive data</li>
+            <li>Exploit code that could be weaponized</li>
+          </ul>
+        </div>
+
+        <h3>Create a .gitignore file:</h3>
+        <div class="command-box">
+          # Create the file<br />
+          touch .gitignore<br /><br />
+
+          # Example .gitignore content:<br />
+          *.key # All .key files<br />
+          credentials.txt # Specific file<br />
+          .env # Environment variables<br />
+          secrets/ # Entire directory<br />
+          *.log # Log files<br />
+          .DS_Store # Mac system files
+        </div>
+
+        <p style="margin-top: 15px">
+          Git will ignore these files automatically!
+        </p>
+      </div>
+
+      <!-- Slide 16: Useful Commands Cheat Sheet -->
+      <div class="slide">
+        <h2>Quick Reference: Essential Commands</h2>
+
+        <div class="command-box" style="font-size: 0.95em">
+          # Setup & Config<br />
+          git config --global user.name "Name"<br />
+          git config --global user.email "email@example.com"<br /><br />
+
+          # Basic Workflow<br />
+          git status # Check status<br />
+          git add . # Stage all changes<br />
+          git commit -m "msg" # Commit with message<br />
+          git push # Upload to GitHub<br />
+          git pull # Download from GitHub<br /><br />
+
+          # Branching<br />
+          git branch # List branches<br />
+          git checkout -b name # Create and switch to branch<br />
+          git merge branch-name # Merge branch<br /><br />
+
+          # Repo Management<br />
+          git clone URL # Clone repository<br />
+          git remote -v # View remote URLs<br />
+          git log # View commit history<br />
+          git diff # See changes
+        </div>
+      </div>
+
+      <!-- Slide 17: Best Practices -->
+      <div class="slide">
+        <h2>Best Practices for Security Professionals</h2>
+
+        <ol style="margin-left: 20px; font-size: 1.15em">
+          <li style="margin: 18px 0">
+            <strong>Commit often, push regularly</strong> - Don't wait weeks to
+            commit
+          </li>
+          <li style="margin: 18px 0">
+            <strong>Write descriptive commit messages</strong> - Future you will
+            thank you
+          </li>
+          <li style="margin: 18px 0">
+            <strong>Use .gitignore for sensitive data</strong> - Never commit
+            credentials
+          </li>
+          <li style="margin: 18px 0">
+            <strong>Review code before merging</strong> - Use pull requests for
+            team review
+          </li>
+          <li style="margin: 18px 0">
+            <strong>Branch for new features</strong> - Keep main branch stable
+          </li>
+          <li style="margin: 18px 0">
+            <strong>Pull before you push</strong> - Avoid conflicts
+          </li>
+        </ol>
+
+        <div class="warning-box" style="margin-top: 30px">
+          <h3>⚠️ Security Warning:</h3>
+          <p>
+            If you accidentally commit sensitive data (API keys, passwords),
+            simply removing it in a new commit is NOT enough! The data remains
+            in Git history. You need to:
+          </p>
+          <ul style="margin-top: 10px">
+            <li>
+              Use tools like <code>git filter-branch</code> or BFG Repo-Cleaner
+            </li>
+            <li>Rotate the compromised credentials immediately</li>
+            <li>Consider the data already exposed</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Slide 18: Common Mistakes -->
+      <div class="slide">
+        <h2>Common Mistakes to Avoid</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>❌ Committing to Wrong Branch</h3>
+            <p>Always check which branch you're on:</p>
+            <div class="command-box" style="margin-top: 10px; font-size: 0.9em">
+              git branch # Shows current branch
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>❌ Not Pulling Before Push</h3>
+            <p>Can cause conflicts and rejected pushes. Always:</p>
+            <div class="command-box" style="margin-top: 10px; font-size: 0.9em">
+              git pull<br />
+              # then push
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>❌ Vague Commit Messages</h3>
+            <p>
+              Bad: "fixed stuff"<br />Good: "Fixed XSS vulnerability in search
+              form"
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>❌ Committing Secrets</h3>
+            <p>Use .gitignore and environment variables!</p>
+            <div class="command-box" style="margin-top: 10px; font-size: 0.9em">
+              # Use .env files<br />
+              API_KEY=secret123
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 19: Git Log & History -->
+      <div class="slide">
+        <h2>Viewing History & Logs</h2>
+
+        <p>
+          Git keeps a complete history. Use it for auditing and investigation:
+        </p>
+
+        <div class="command-box">
+          # View commit history<br />
+          git log<br /><br />
+
+          # Compact view (one line per commit)<br />
+          git log --oneline<br /><br />
+
+          # See who changed what in a file<br />
+          git blame filename.py<br /><br />
+
+          # View changes in a specific commit<br />
+          git show abc123<br /><br />
+
+          # Search commit messages<br />
+          git log --grep="vulnerability"
+        </div>
+
+        <div class="box" style="margin-top: 25px">
+          <h3>Security Use Case:</h3>
+          <p>Investigating when a vulnerability was introduced:</p>
+          <div class="command-box" style="margin-top: 10px">
+            git log --all --grep="authentication" -- login.py
+          </div>
+          <p style="margin-top: 10px">
+            This shows all commits related to authentication in the login.py
+            file.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 20: Collaboration Tips -->
+      <div class="slide">
+        <h2>Collaborating with Your Team</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Communication</h3>
+            <ul>
+              <li>Use descriptive branch names</li>
+              <li>Write clear PR descriptions</li>
+              <li>Comment on code reviews</li>
+              <li>Link issues to commits</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Code Review</h3>
+            <ul>
+              <li>Review PRs promptly</li>
+              <li>Give constructive feedback</li>
+              <li>Check for security issues</li>
+              <li>Test changes locally</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="box" style="margin-top: 25px">
+          <h3>Branch Naming Conventions:</h3>
+          <div class="command-box">
+            feature/add-port-scanner<br />
+            bugfix/fix-sql-injection<br />
+            hotfix/patch-critical-vuln<br />
+            docs/update-install-guide
+          </div>
+          <p style="margin-top: 15px">
+            Consistent naming helps everyone understand what each branch is for!
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 21: Practice Exercise -->
+      <div class="slide">
+        <h2>Practice Exercise</h2>
+
+        <div class="box">
+          <h3>Create Your Security Portfolio Repository</h3>
+          <ol style="margin-left: 20px; font-size: 1.05em; line-height: 1.8">
+            <li>
+              Create a new repository on GitHub called "security-portfolio"
+            </li>
+            <li>Clone it to your local machine</li>
+            <li>Create a README.md describing your cybersecurity interests</li>
+            <li>Add a .gitignore file</li>
+            <li>
+              Create a "scripts" folder with a simple Python script (e.g., port
+              scanner)
+            </li>
+            <li>Commit and push everything to GitHub</li>
+            <li>Create a new branch called "feature/add-network-tool"</li>
+            <li>Add another script in this branch</li>
+            <li>Push the branch and create a Pull Request on GitHub</li>
+            <li>Merge the PR</li>
+          </ol>
+        </div>
+
+        <p style="margin-top: 25px; font-size: 1.1em">
+          This will be your foundation for showcasing security projects to
+          potential employers!
+        </p>
+      </div>
+
+      <!-- Slide 22: Resources -->
+      <div class="slide">
+        <h2>Learning Resources</h2>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>📚 Documentation</h3>
+            <ul>
+              <li>Git official docs: git-scm.com</li>
+              <li>GitHub Guides: guides.github.com</li>
+              <li>Atlassian Git tutorials</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>🎮 Interactive Learning</h3>
+            <ul>
+              <li>learngitbranching.js.org</li>
+              <li>GitHub Learning Lab</li>
+              <li>Oh My Git! (game)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>📺 Video Tutorials</h3>
+            <ul>
+              <li>FreeCodeCamp Git course</li>
+              <li>Traversy Media Git crash course</li>
+              <li>The Net Ninja Git tutorials</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>🔒 Security-Focused</h3>
+            <ul>
+              <li>OWASP GitHub repos</li>
+              <li>Awesome Security lists</li>
+              <li>HackerOne disclosed reports</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 23: Thank You -->
+      <div class="slide">
+        <h1>Thank You!</h1>
+        <p class="subtitle" style="margin-top: 30px">
+          You're now ready to use Git & GitHub!
+        </p>
+
+        <div class="box" style="margin-top: 50px">
+          <h3>Remember:</h3>
+          <ul style="font-size: 1.2em">
+            <li>Practice makes perfect - use Git daily</li>
+            <li>
+              Don't be afraid to make mistakes (that's what version control is
+              for!)
+            </li>
+            <li>Start building your security portfolio today</li>
+            <li>Contribute to the security community</li>
+          </ul>
+        </div>
+
+        <p
+          style="
+            margin-top: 50px;
+            font-size: 1.3em;
+            text-align: center;
+            color: #00ff88;
+          "
+        >
+          Questions? Let's discuss!
+        </p>
+
+        <p style="margin-top: 20px; text-align: center; color: #888">
+          Happy hacking!
+        </p>
+      </div>
+    </div>
+
+    <div class="slide-number">
+      <span id="currentSlide">1</span> / <span id="totalSlides">23</span>
+    </div>
+
+    <div class="controls">
+      <button id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+      <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+
+      document.getElementById('totalSlides').textContent = totalSlides;
+
+      function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+
+        if (n >= totalSlides) {
+          currentSlide = totalSlides - 1;
+        } else if (n < 0) {
+          currentSlide = 0;
+        } else {
+          currentSlide = n;
+        }
+
+        slides[currentSlide].classList.add('active');
+        document.getElementById('currentSlide').textContent = currentSlide + 1;
+
+        document.getElementById('prevBtn').disabled = currentSlide === 0;
+        document.getElementById('nextBtn').disabled =
+          currentSlide === totalSlides - 1;
+      }
+
+      function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+        if (e.key === 'ArrowRight') changeSlide(1);
+      });
+
+      showSlide(0);
+    </script>
+  </body>
+</html>
