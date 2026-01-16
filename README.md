@@ -17,26 +17,27 @@ This crash course covers essential Git and GitHub concepts through 23 comprehens
 ## Topics Covered
 
 1. **Introduction** - What is Git and why it matters
-2. **Key Concepts** - Repository, Commit, Branch, Clone
-3. **Setup** - Installing and configuring Git
-4. **Basic Workflow** - add, commit, push, pull
-5. **Creating Repositories** - Local and GitHub methods
-6. **Cloning** - Working with remote repositories
-7. **Making Changes** - Commits and good practices
-8. **Pushing & Pulling** - Syncing with GitHub
-9. **Branching** - Parallel development workflows
-10. **Merging** - Combining branches and pull requests
-11. **Merge Conflicts** - Resolving conflicts
-12. **Undoing Changes** - Common undo operations
-13. **.gitignore** - Protecting sensitive data
-14. **Command Reference** - Essential commands cheat sheet
-15. **Best Practices** - Professional workflows
-16. **Common Mistakes** - Pitfalls to avoid
-17. **Git History** - Logs and auditing
-18. **Collaboration** - Team workflows and code review
-19. **Practice Exercise** - Building a security portfolio
-20. **Resources** - Learning materials and references
-21. **Conclusion** - Next steps
+2. **What is Git?** - Version control fundamentals
+3. **Key Concepts** - Repository, Commit, Branch, Clone
+4. **Setup** - Installing and configuring Git
+5. **Basic Workflow** - add, commit, push, pull
+6. **Creating Repositories** - Local and GitHub methods
+7. **Cloning** - Working with remote repositories
+8. **Making Changes** - Commits and good practices
+9. **Pushing & Pulling** - Syncing with GitHub
+10. **Branching** - Parallel development workflows
+11. **Merging** - Combining branches and pull requests
+12. **Merge Conflicts** - Resolving conflicts
+13. **Undoing Changes** - Common undo operations
+14. **.gitignore** - Protecting sensitive data
+15. **Command Reference** - Essential commands cheat sheet
+16. **Best Practices** - Professional workflows
+17. **Common Mistakes** - Pitfalls to avoid
+18. **Git History** - Logs and auditing
+19. **Collaboration** - Team workflows and code review
+20. **Practice Exercise** - Building a security portfolio
+21. **Resources** - Learning materials and references
+22. **Conclusion** - Next steps
 
 ## Target Audience
 
